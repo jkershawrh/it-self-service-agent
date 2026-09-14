@@ -18,6 +18,11 @@ dependencies = [
 [tool.hatch.build.targets.wheel]
 packages = ["test", "proof_layer"]
 
+[tool.hatch.build]
+exclude = [
+    ".venv*",
+]
+
 [tool.black]
 line-length = 88
 target-version = ["py312"]
@@ -54,6 +59,9 @@ dev = [
     "pytest>=8.4.1",
     "pytest-asyncio>=1.2.0",
     "pytest-cov>=6.2.1",
+    "grpcio==1.76.0",
+    "grpcio-tools==1.76.0",
     "types-pyyaml>=6.0.12.20250915",
     "types-requests>=2.32.4.20250913",
+    "types-grpcio>=1.0.0.20250914",
 ]

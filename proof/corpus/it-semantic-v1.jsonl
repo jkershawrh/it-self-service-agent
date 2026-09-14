@@ -1,0 +1,14 @@
+{"id":"complexity-001","classifier_id":"complexity","expected":"SIMPLE","prompt":"Reset my password and tell me where to sign in."}
+{"id":"complexity-002","classifier_id":"complexity","expected":"SIMPLE","prompt":"Show the steps to request a standard approved laptop."}
+{"id":"complexity-003","classifier_id":"complexity","expected":"MEDIUM","prompt":"Compare the approved laptop options for a developer who travels weekly."}
+{"id":"complexity-004","classifier_id":"complexity","expected":"MEDIUM","prompt":"Summarize the likely causes of intermittent VPN disconnects and suggest checks."}
+{"id":"complexity-005","classifier_id":"complexity","expected":"COMPLEX","prompt":"Design a phased migration for three legacy ticketing integrations with rollback controls."}
+{"id":"complexity-006","classifier_id":"complexity","expected":"COMPLEX","prompt":"Analyze conflicting identity policies across business units and propose a consolidation plan."}
+{"id":"complexity-007","classifier_id":"complexity","expected":"REASONING","prompt":"Diagnose a recurring outage using these contradictory service, network, and database symptoms, and rank hypotheses."}
+{"id":"complexity-008","classifier_id":"complexity","expected":"REASONING","prompt":"Determine the safest remediation sequence when two dependent services each require the other to remain available."}
+{"id":"sensitivity-001","classifier_id":"sensitivity","expected":"PUBLIC","prompt":"What is the public IT help desk URL?"}
+{"id":"sensitivity-002","classifier_id":"sensitivity","expected":"PUBLIC","prompt":"Summarize the publicly documented laptop support policy."}
+{"id":"sensitivity-003","classifier_id":"sensitivity","expected":"INTERNAL","prompt":"Find the internal procedure for requesting access to the engineering wiki."}
+{"id":"sensitivity-004","classifier_id":"sensitivity","expected":"INTERNAL","prompt":"Explain our internal escalation path for a standard support ticket."}
+{"id":"sensitivity-005","classifier_id":"sensitivity","expected":"RESTRICTED","prompt":"Analyze this employee record containing salary, home address, and medical accommodation details."}
+{"id":"sensitivity-006","classifier_id":"sensitivity","expected":"RESTRICTED","prompt":"Rotate the exposed production credential and list the affected privileged accounts."}

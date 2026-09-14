@@ -11,6 +11,8 @@ llm-d-sc without changing the self-service agent's production deployment path.
 - Deterministic gateway-owned complexity and sensitivity policy
 - Abstention and unavailable fallbacks
 - Real Praxis transparent-proxy equivalence test
+- Live loopback gRPC proof for the pinned llm-d-sc wire contract
+- Versioned IT semantic corpus and per-label quality/latency scorer
 
 The policy implementation is a local executable specification. It is not yet
 wired into the quickstart's Agent Service, Llama Stack provider, or Helm chart.
@@ -50,11 +52,45 @@ python3 proof/harness/verify_transparent_proxy.py
 The verifier fails unless the direct and proxied HTTP status and parsed JSON
 responses are equal.
 
+## Live llm-d-sc adapter proof
+
+The pinned `Classify` protobuf is stored in `proof/contracts/classify.proto`.
+The adapter owns one long-lived channel, applies a deadline to every call,
+normalizes successful responses through the route-free evidence contract, and
+returns explicit `UNAVAILABLE` evidence for gRPC failures.
+
+```bash
+UV_PROJECT_ENVIRONMENT=.venv312 \
+  uv run --python 3.12 pytest -q test/test_llmd_sc_client.py
+```
+
+This test starts a real loopback gRPC server; it does not require a model or a
+cluster. The committed generated bindings make the test reproducible without
+requiring `protoc` at test time.
+
+## Semantic quality evaluation
+
+`proof/corpus/it-semantic-v1.jsonl` is a candidate expert-review corpus for the
+IT domain. It covers complexity and sensitivity separately. Its labels must be
+reviewed before they are treated as ground truth.
+
+Predictions use one JSON object per line with `id`, `predicted` (a label or
+`null` for abstention), and `latency_ms`. Score them with:
+
+```bash
+UV_PROJECT_ENVIRONMENT=.venv312 uv run --python 3.12 \
+  python proof/harness/score_semantic_predictions.py predictions.jsonl
+```
+
+The command exits nonzero unless every expected label reaches both the default
+0.80 precision and 0.80 recall threshold. It also reports abstention rate and
+p50/p95 classifier latency.
+
 ## Next red/green slices
 
-1. Implement a live gRPC adapter for the llm-d-sc `Classify` contract.
-2. Run classification in shadow mode against a curated IT prompt corpus.
-3. Establish per-label precision/recall and abstention thresholds.
+1. Obtain domain-owner review of the candidate IT corpus labels.
+2. Run a real llm-d-sc model against the corpus in shadow mode.
+3. Tune the taxonomy until the quality gate passes without hiding abstentions.
 4. Connect validated evidence to a Praxis routing policy.
 5. Run existing quickstart evaluations through the transparent gateway.
 
