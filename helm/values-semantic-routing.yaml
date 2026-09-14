@@ -1,0 +1,34 @@
+# Optional conservative semantic-routing extension.
+#
+# This overlay is a configuration contract for the feature branch. It does not
+# activate or deploy the adapter until approved images and RACMaaS settings are
+# supplied. The canonical quickstart behavior remains unchanged.
+semanticRouting:
+  enabled: false
+
+  # Keep shadow mode until an independently calibrated margin passes the
+  # maintainer quality gate. "enforce" permits only confident SIMPLE requests
+  # to use the economical alias; every other outcome uses baseline.
+  mode: shadow
+
+  classifier:
+    signal: complexity
+    taxonomyRevision: it-complexity-binary-anchors-v1
+    endpoint: ""
+    timeoutMilliseconds: 1000
+
+  policy:
+    simpleLabel: SIMPLE
+    # Experimental only: observed on the eight-prompt binary proof corpus.
+    minimumMargin: 0.45
+    economicalModelAlias: ""
+    baselineModelAlias: ""
+
+  praxis:
+    endpoint: ""
+
+  racmaas:
+    apiBase: ""
+    apiKeySecret:
+      name: ""
+      key: api-key
