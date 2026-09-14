@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rh-ai-quickstart.example/contracts/semantic-evidence.schema.json",
+  "title": "Normalized llm-d-sc semantic evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "request_id",
+    "classifier_id",
+    "model_revision",
+    "tokenizer_revision",
+    "taxonomy_revision",
+    "status",
+    "ranked"
+  ],
+  "properties": {
+    "request_id": {"type": "string", "minLength": 1},
+    "classifier_id": {"type": "string", "minLength": 1},
+    "model_revision": {"type": "string", "minLength": 1},
+    "tokenizer_revision": {"type": "string", "minLength": 1},
+    "taxonomy_revision": {"type": "string", "minLength": 1},
+    "status": {"enum": ["OK", "ABSTAIN", "UNAVAILABLE"]},
+    "ranked": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "score"],
+        "properties": {
+          "label": {"type": "string", "minLength": 1},
+          "score": {"type": "number"}
+        }
+      }
+    }
+  }
+}

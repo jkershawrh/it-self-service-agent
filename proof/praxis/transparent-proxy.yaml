@@ -1,0 +1,26 @@
+listeners:
+  - name: self-service-agent-proof
+    address: "127.0.0.1:18080"
+    filter_chains:
+      - transparent
+
+filter_chains:
+  - name: transparent
+    filters:
+      - filter: router
+        routes:
+          - path_prefix: "/"
+            cluster: baseline-model
+      - filter: load_balancer
+        clusters:
+          - name: baseline-model
+            endpoints:
+              - "127.0.0.1:18081"
+
+admin:
+  address: "127.0.0.1:19001"
+
+insecure_options:
+  allow_private_endpoints: true
+
+shutdown_timeout_secs: 1

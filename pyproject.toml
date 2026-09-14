@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["test"]
+packages = ["test", "proof_layer"]
 
 [tool.black]
 line-length = 88
