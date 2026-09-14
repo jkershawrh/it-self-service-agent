@@ -4,6 +4,7 @@
 |---|---|---|---|---|---|
 | CDD-001 | CDD/TDD | Parse versioned ranked evidence | `ModuleNotFoundError: proof_layer` | Valid evidence preserves labels, scores, and revisions | Green |
 | CDD-002 | CDD/TDD | Preserve routing authority boundary | No contract enforcement | Route or endpoint fields are rejected | Green |
+| CDD-003 | CDD | Upstream llm-d-sc wire contract | Build blocked by missing `protoc`, then by Rust 1.90 ARM64 FP16 support | Upstream gRPC and schema suites pass with pinned prerequisites | Green |
 | CBT-001 | CBT/BDD | Shadow classification | No shadow-mode implementation | Evidence is recorded and the baseline route is unchanged | Green |
 | CBT-002 | CBT/BDD | Policy-owned semantic routing | No policy implementation | Complexity and sensitivity map to deterministic approved routes | Green |
 | CBT-003 | CBT/BDD | Explicit abstention fallback | No fallback implementation | ABSTAIN preserves baseline route and records its reason | Green |
@@ -53,3 +54,29 @@ reason, and token usage.
   "total_tokens": 7
 }
 ```
+
+## Upstream llm-d-sc contract run
+
+llm-d-sc source revision:
+
+```text
+llm-d-incubation/llm-d-semantic-classifier a17834b5c3beb4186e2c1c1d8eb757dce3ed5b85
+```
+
+Command, with an isolated official `protoc` 36.1 binary:
+
+```text
+PROTOC=/tmp/protoc/bin/protoc \
+  cargo +1.96.1 test --release --test schema --test grpc -- --nocapture
+```
+
+Result:
+
+```text
+grpc:   8 passed, 0 failed
+schema: 2 passed, 0 failed
+```
+
+This proves over a real tonic round trip that responses contain ranked,
+versioned semantic evidence, persistent channels are reused, session metadata
+is preserved, and the classifier cannot dictate a route or endpoint.

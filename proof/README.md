@@ -57,3 +57,7 @@ responses are equal.
 3. Establish per-label precision/recall and abstention thresholds.
 4. Connect validated evidence to a Praxis routing policy.
 5. Run existing quickstart evaluations through the transparent gateway.
+
+The upstream llm-d-sc schema and gRPC suites have also been run locally. On
+Apple ARM64 they require `protoc` and an explicit Rust 1.96.1 toolchain; the
+machine's default Rust 1.90 toolchain cannot compile Candle's FP16 NEON path.
