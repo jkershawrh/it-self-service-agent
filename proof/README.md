@@ -100,6 +100,23 @@ These are local Apple ARM64 timings, not cluster capacity measurements. The run
 also exposed and corrected a proof-policy mismatch: upstream sensitivity uses
 `CONFIDENTIAL`, `REGULATED`, and `NEVER_EGRESS`, not `RESTRICTED`.
 
+## Anchor-engineering experiment
+
+The independently worded IT taxonomies in `proof/taxonomies/` reuse the pinned
+upstream model weights and change only labels' anchor examples. They were run
+once against the same candidate corpus; raw results are preserved in
+`proof/evidence/it-semantic-custom-anchors-2026-09-14.jsonl`.
+
+- complexity improved from 3/8 (37.5%) to 4/8 (50%)
+- sensitivity improved from 6/10 (60%) to 9/10 (90%)
+- every `CONFIDENTIAL`, `REGULATED`, and `NEVER_EGRESS` case was correct
+- the one sensitivity error was `INTERNAL` classified as `PUBLIC`
+
+The strict per-label 0.80 precision/recall gate remains Red because `PUBLIC`
+precision is 0.67 and `INTERNAL` recall is 0.50. Complexity also remains far
+below the gate. Further editing against these same 18 prompts would overfit the
+evaluation set; the next iteration requires separate development and test sets.
+
 ## Next red/green slices
 
 1. Obtain domain-owner review of the candidate IT corpus labels.

@@ -1,0 +1,63 @@
+{
+  "classifier_id": "sensitivity",
+  "signal": "sensitivity",
+  "taxonomy_revision": "it-sensitivity-anchors-v1",
+  "model_repo": "cnuland/llm-d-sc-sensitivity",
+  "model_revision": "d82ff10d41fcf7d33f90e0597e6621bf1ff94ed4",
+  "method": "anchor-topk-mean",
+  "top_k": 3,
+  "labels": ["PUBLIC", "INTERNAL", "CONFIDENTIAL", "REGULATED", "NEVER_EGRESS"],
+  "anchors": {
+    "PUBLIC": [
+      "Find the publicly available technical support webpage.",
+      "Summarize a product policy published on the company website.",
+      "Explain a feature using public documentation.",
+      "Where can customers download the public user guide?",
+      "Provide the published support contact information.",
+      "Summarize the public release notes.",
+      "What does the public knowledge-base article recommend?",
+      "Find the public system requirements for this product."
+    ],
+    "INTERNAL": [
+      "Show the employee-only process for requesting access to an internal service.",
+      "Explain the internal escalation path for an ordinary help desk case.",
+      "Find the team runbook for routine application maintenance.",
+      "Summarize the internal onboarding checklist.",
+      "Which internal group owns this business application?",
+      "Where is the employee hardware ordering procedure?",
+      "Describe the internal naming convention for test namespaces.",
+      "Summarize notes from the internal weekly operations meeting."
+    ],
+    "CONFIDENTIAL": [
+      "Review the non-public security assessment before remediation is announced.",
+      "Compare unpublished employee compensation ranges.",
+      "Summarize a confidential incident investigation.",
+      "Review an unreleased restructuring proposal.",
+      "Analyze negotiated customer contract terms.",
+      "Summarize a restricted product roadmap.",
+      "Review the private findings from an internal audit.",
+      "Draft a response about an undisclosed acquisition plan."
+    ],
+    "REGULATED": [
+      "Process a personnel file containing health accommodation and residential information.",
+      "Review customer banking identifiers and transaction records.",
+      "Summarize a patient record containing diagnosis and prescriptions.",
+      "Analyze employee tax identifiers and payroll data.",
+      "Process payment card details for a customer refund.",
+      "Review student education records containing grades and identifiers.",
+      "Handle a privacy request containing personally identifiable information.",
+      "Analyze a loan application containing income and government identifiers."
+    ],
+    "NEVER_EGRESS": [
+      "Rotate a live production password exposed in configuration.",
+      "Debug a deployment file containing a private cryptographic key.",
+      "Handle an active bearer token copied from an HTTP header.",
+      "Repair a kubeconfig containing cluster administrator credentials.",
+      "Update an application using a live cloud secret access key.",
+      "Inspect an environment file containing production credentials.",
+      "Configure a service using an active payment provider API secret.",
+      "Explain an SSH private key copied from a bastion host."
+    ]
+  },
+  "provenance": "Independent IT-policy anchors authored for the local proof; evaluation prompts are not included verbatim."
+}

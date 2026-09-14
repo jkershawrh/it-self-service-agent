@@ -1,0 +1,53 @@
+{
+  "classifier_id": "complexity",
+  "signal": "complexity",
+  "taxonomy_revision": "it-complexity-anchors-v1",
+  "model_repo": "cnuland/llm-d-sc-complexity",
+  "model_revision": "c5f55ef419d268ba843c544dc00988d1e9878044",
+  "method": "anchor-topk-mean",
+  "top_k": 3,
+  "labels": ["SIMPLE", "MEDIUM", "COMPLEX", "REASONING"],
+  "anchors": {
+    "SIMPLE": [
+      "Unlock my account.",
+      "Where is the employee support portal?",
+      "Give me the approved software request link.",
+      "How do I enroll a security key?",
+      "Tell me the current service desk phone number.",
+      "Request a replacement mouse.",
+      "Show me the standard access request form.",
+      "What is the status of ticket INC-123?"
+    ],
+    "MEDIUM": [
+      "Compare two approved workstation configurations for a software engineer.",
+      "Explain several common reasons a corporate VPN connection drops.",
+      "Summarize the available authentication methods and their tradeoffs.",
+      "Walk me through troubleshooting a printer that works for other users.",
+      "Recommend an approved collaboration tool based on these user requirements.",
+      "Explain how to migrate my files when replacing a laptop.",
+      "Compare standard and expedited hardware replacement processes.",
+      "Summarize this incident timeline and identify the next support action."
+    ],
+    "COMPLEX": [
+      "Design a staged migration of several legacy integrations with rollback and validation gates.",
+      "Create an enterprise identity consolidation plan spanning multiple business units.",
+      "Architect a resilient support platform integrating ticketing, identity, and asset systems.",
+      "Plan a zero-downtime migration of a critical internal service with dependent applications.",
+      "Design governance and deployment controls for an organization-wide automation platform.",
+      "Develop a multi-phase remediation program for recurring capacity failures across regions.",
+      "Propose an operating model for consolidating overlapping IT service catalogs.",
+      "Design a disaster recovery approach for interconnected business services."
+    ],
+    "REASONING": [
+      "Diagnose contradictory application, network, and database evidence and rank the likely root causes.",
+      "Determine a safe recovery order when two unavailable services have circular dependencies.",
+      "Reason from incomplete telemetry to distinguish saturation, deadlock, and packet loss.",
+      "Evaluate competing outage hypotheses and state what evidence would falsify each one.",
+      "Infer the probable failure sequence from logs whose timestamps and symptoms conflict.",
+      "Choose the least risky remediation when every option violates one operational constraint.",
+      "Analyze a distributed failure and rank causal explanations using the supplied evidence.",
+      "Resolve conflicting security and availability requirements and justify the decision chain."
+    ]
+  },
+  "provenance": "Independent IT-domain anchors authored for the local proof; evaluation prompts are not included verbatim."
+}

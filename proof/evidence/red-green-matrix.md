@@ -116,3 +116,17 @@ sensitivity run showed adjacent-tier confusion, including one credential prompt
 classified `REGULATED` instead of `NEVER_EGRESS`. Because the 0.80 per-label
 precision/recall gate failed, the evidence is suitable only for shadow-mode
 observation. Praxis enforcement is not approved by this proof.
+
+## IT anchor experiment
+
+Two independently worded IT anchor sets were evaluated without changing model
+weights. Complexity rose from 37.5% to 50%, while sensitivity rose from 60% to
+90%. All six high-impact sensitivity cases (`CONFIDENTIAL`, `REGULATED`, and
+`NEVER_EGRESS`) were correct. The remaining error was an `INTERNAL` prompt
+classified as `PUBLIC`.
+
+The experiment demonstrates that policy-specific anchors are a meaningful lever
+for sensitivity but not sufficient evidence for activation: per-label metrics
+still fail the gate, margins for several correct sensitive cases are small, and
+the sample is only two prompts per label. No second anchor iteration was made
+against this test corpus, avoiding test-set overfitting.
