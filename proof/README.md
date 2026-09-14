@@ -117,6 +117,22 @@ precision is 0.67 and `INTERNAL` recall is 0.50. Complexity also remains far
 below the gate. Further editing against these same 18 prompts would overfit the
 evaluation set; the next iteration requires separate development and test sets.
 
+## Binary complexity experiment
+
+`proof/taxonomies/it-complexity-binary-v1.json` reduces the routing question to
+`SIMPLE` versus `COMPLEX`. Its separate eight-prompt corpus produced 4/8 correct:
+
+- `SIMPLE`: recall 1.0, precision 0.43
+- `COMPLEX`: recall 0.20, precision 1.0
+- p50 10.62 ms, p95 12.29 ms
+
+The unthresholded classifier is unsafe for model downgrades because four complex
+requests were labeled simple. An exploratory margin threshold of 0.45 happened
+to accept all three true-simple cases and reject all four false-simple cases in
+this tiny run. That threshold was observed on the evaluation data and is not an
+approved setting. It needs calibration on a development set and confirmation
+on a larger untouched test set.
+
 ## Next red/green slices
 
 1. Obtain domain-owner review of the candidate IT corpus labels.

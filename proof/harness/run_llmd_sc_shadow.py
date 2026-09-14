@@ -21,6 +21,14 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", required=True)
     parser.add_argument("--classifier", required=True)
+    parser.add_argument(
+        "--signal",
+        help="Wire signal name when it differs from the corpus classifier name",
+    )
+    parser.add_argument(
+        "--expected-response-classifier",
+        help="Wire classifier_id when it differs from the corpus classifier name",
+    )
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument(
         "--corpus",
@@ -47,13 +55,14 @@ def main() -> int:
                     request_id=str(uuid.uuid4()),
                     session_id="it-semantic-shadow-v1",
                     context=row["prompt"],
-                    signals=(args.classifier,),
+                    signals=(args.signal or args.classifier,),
                 )
             )
             latency_ms = (time.perf_counter() - started) * 1000
-            if evidence.classifier_id != args.classifier:
+            expected_classifier = args.expected_response_classifier or args.classifier
+            if evidence.classifier_id != expected_classifier:
                 raise SystemExit(
-                    f"expected classifier {args.classifier!r}, "
+                    f"expected classifier {expected_classifier!r}, "
                     f"received {evidence.classifier_id!r}"
                 )
             results.append(

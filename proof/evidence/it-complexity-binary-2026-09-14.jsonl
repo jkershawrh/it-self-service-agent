@@ -1,0 +1,8 @@
+{"id":"binary-001","latency_ms":11.501,"margin":0.542992353439331,"model_revision":"c5f55ef419d268ba843c544dc00988d1e9878044","predicted":"SIMPLE","status":"OK","taxonomy_revision":"it-complexity-binary-anchors-v1"}
+{"id":"binary-002","latency_ms":10.767,"margin":0.4548148512840271,"model_revision":"c5f55ef419d268ba843c544dc00988d1e9878044","predicted":"SIMPLE","status":"OK","taxonomy_revision":"it-complexity-binary-anchors-v1"}
+{"id":"binary-003","latency_ms":9.18,"margin":0.6338519155979156,"model_revision":"c5f55ef419d268ba843c544dc00988d1e9878044","predicted":"SIMPLE","status":"OK","taxonomy_revision":"it-complexity-binary-anchors-v1"}
+{"id":"binary-004","latency_ms":10.329,"margin":0.44419676065444946,"model_revision":"c5f55ef419d268ba843c544dc00988d1e9878044","predicted":"SIMPLE","status":"OK","taxonomy_revision":"it-complexity-binary-anchors-v1"}
+{"id":"binary-005","latency_ms":10.471,"margin":0.9376574195921421,"model_revision":"c5f55ef419d268ba843c544dc00988d1e9878044","predicted":"COMPLEX","status":"OK","taxonomy_revision":"it-complexity-binary-anchors-v1"}
+{"id":"binary-006","latency_ms":10.012,"margin":0.4184598922729492,"model_revision":"c5f55ef419d268ba843c544dc00988d1e9878044","predicted":"SIMPLE","status":"OK","taxonomy_revision":"it-complexity-binary-anchors-v1"}
+{"id":"binary-007","latency_ms":12.327,"margin":0.4351028800010681,"model_revision":"c5f55ef419d268ba843c544dc00988d1e9878044","predicted":"SIMPLE","status":"OK","taxonomy_revision":"it-complexity-binary-anchors-v1"}
+{"id":"binary-008","latency_ms":12.215,"margin":0.20260369777679443,"model_revision":"c5f55ef419d268ba843c544dc00988d1e9878044","predicted":"SIMPLE","status":"OK","taxonomy_revision":"it-complexity-binary-anchors-v1"}

@@ -130,3 +130,16 @@ for sensitivity but not sufficient evidence for activation: per-label metrics
 still fail the gate, margins for several correct sensitive cases are small, and
 the sample is only two prompts per label. No second anchor iteration was made
 against this test corpus, avoiding test-set overfitting.
+
+## Binary complexity experiment
+
+The two-label taxonomy scored 4/8 overall. It identified all three true-simple
+prompts, but also labeled four of five complex prompts simple. Therefore raw
+binary classification is Red for active routing.
+
+Margins provide a possible conservative gate in this sample. True-simple
+margins were 0.455, 0.543, and 0.634; false-simple margins were 0.203, 0.418,
+0.435, and 0.444. A threshold of 0.45 would have produced three accepted safe
+downgrades and no unsafe downgrades. Since that boundary was discovered using
+the evaluation set, it is hypothesis evidence only and must not be promoted
+without independent calibration and test corpora.

@@ -1,0 +1,8 @@
+{"id":"binary-001","classifier_id":"complexity-binary","expected":"SIMPLE","prompt":"Reset my password and tell me where to sign in."}
+{"id":"binary-002","classifier_id":"complexity-binary","expected":"SIMPLE","prompt":"Show the steps to request a standard approved laptop."}
+{"id":"binary-003","classifier_id":"complexity-binary","expected":"SIMPLE","prompt":"Compare the approved laptop options for a developer who travels weekly."}
+{"id":"binary-004","classifier_id":"complexity-binary","expected":"COMPLEX","prompt":"Summarize the likely causes of intermittent VPN disconnects and suggest checks."}
+{"id":"binary-005","classifier_id":"complexity-binary","expected":"COMPLEX","prompt":"Design a phased migration for three legacy ticketing integrations with rollback controls."}
+{"id":"binary-006","classifier_id":"complexity-binary","expected":"COMPLEX","prompt":"Analyze conflicting identity policies across business units and propose a consolidation plan."}
+{"id":"binary-007","classifier_id":"complexity-binary","expected":"COMPLEX","prompt":"Diagnose a recurring outage using these contradictory service, network, and database symptoms, and rank hypotheses."}
+{"id":"binary-008","classifier_id":"complexity-binary","expected":"COMPLEX","prompt":"Determine the safest remediation sequence when two dependent services each require the other to remain available."}

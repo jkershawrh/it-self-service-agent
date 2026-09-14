@@ -1,0 +1,37 @@
+{
+  "classifier_id": "complexity-binary",
+  "signal": "complexity",
+  "taxonomy_revision": "it-complexity-binary-anchors-v1",
+  "model_repo": "cnuland/llm-d-sc-complexity",
+  "model_revision": "c5f55ef419d268ba843c544dc00988d1e9878044",
+  "method": "anchor-topk-mean",
+  "top_k": 3,
+  "labels": ["SIMPLE", "COMPLEX"],
+  "anchors": {
+    "SIMPLE": [
+      "Unlock my employee account.",
+      "Where is the internal support portal?",
+      "Show the standard process for ordering approved hardware.",
+      "Compare two approved workstation choices for a developer.",
+      "Summarize this knowledge-base article.",
+      "Check the current status of my service ticket.",
+      "Explain the routine steps for replacing a company laptop.",
+      "Find the documented procedure for requesting application access.",
+      "Recommend one approved option from these straightforward requirements.",
+      "Tell me which team owns this internal service."
+    ],
+    "COMPLEX": [
+      "Diagnose several competing root causes from incomplete operational evidence.",
+      "Design a phased migration with dependencies, validation gates, and rollback.",
+      "Resolve contradictory application, network, and database symptoms.",
+      "Create an architecture spanning identity, ticketing, and asset platforms.",
+      "Determine the safest recovery sequence for circular service dependencies.",
+      "Plan an enterprise consolidation across teams with conflicting policies.",
+      "Rank outage hypotheses and identify evidence that would disprove each one.",
+      "Develop a multi-stage remediation strategy with risk controls.",
+      "Choose among solutions when security and availability requirements conflict.",
+      "Infer a failure sequence from inconsistent logs and telemetry."
+    ]
+  },
+  "provenance": "Independent binary IT complexity anchors; held-out evaluation prompts are not included verbatim."
+}
