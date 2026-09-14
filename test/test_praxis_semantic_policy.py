@@ -57,7 +57,9 @@ def test_shadow_mode_records_evidence_without_changing_route() -> None:
     [
         ("complexity", "SIMPLE", "economical-model"),
         ("complexity", "REASONING", "advanced-model"),
-        ("sensitivity", "RESTRICTED", "private-model"),
+        ("sensitivity", "CONFIDENTIAL", "private-model"),
+        ("sensitivity", "REGULATED", "private-model"),
+        ("sensitivity", "NEVER_EGRESS", "private-model"),
     ],
 )
 def test_gateway_policy_owns_the_route(

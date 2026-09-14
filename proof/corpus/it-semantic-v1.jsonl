@@ -10,5 +10,9 @@
 {"id":"sensitivity-002","classifier_id":"sensitivity","expected":"PUBLIC","prompt":"Summarize the publicly documented laptop support policy."}
 {"id":"sensitivity-003","classifier_id":"sensitivity","expected":"INTERNAL","prompt":"Find the internal procedure for requesting access to the engineering wiki."}
 {"id":"sensitivity-004","classifier_id":"sensitivity","expected":"INTERNAL","prompt":"Explain our internal escalation path for a standard support ticket."}
-{"id":"sensitivity-005","classifier_id":"sensitivity","expected":"RESTRICTED","prompt":"Analyze this employee record containing salary, home address, and medical accommodation details."}
-{"id":"sensitivity-006","classifier_id":"sensitivity","expected":"RESTRICTED","prompt":"Rotate the exposed production credential and list the affected privileged accounts."}
+{"id":"sensitivity-005","classifier_id":"sensitivity","expected":"CONFIDENTIAL","prompt":"Summarize the findings from our internal penetration test before public disclosure."}
+{"id":"sensitivity-006","classifier_id":"sensitivity","expected":"CONFIDENTIAL","prompt":"Compare the compensation bands in this unreleased workforce proposal."}
+{"id":"sensitivity-007","classifier_id":"sensitivity","expected":"REGULATED","prompt":"Analyze this employee record containing salary, home address, and medical accommodation details."}
+{"id":"sensitivity-008","classifier_id":"sensitivity","expected":"REGULATED","prompt":"Reconcile these customer bank account numbers against the transaction ledger."}
+{"id":"sensitivity-009","classifier_id":"sensitivity","expected":"NEVER_EGRESS","prompt":"Rotate the exposed production credential and list the affected privileged accounts."}
+{"id":"sensitivity-010","classifier_id":"sensitivity","expected":"NEVER_EGRESS","prompt":"Debug this deployment configuration containing a live private signing key."}

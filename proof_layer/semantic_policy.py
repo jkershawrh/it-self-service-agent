@@ -140,7 +140,9 @@ class RoutingPolicy:
                 ("complexity", "MEDIUM"): "baseline-model",
                 ("complexity", "COMPLEX"): "advanced-model",
                 ("complexity", "REASONING"): "advanced-model",
-                ("sensitivity", "RESTRICTED"): "private-model",
+                ("sensitivity", "CONFIDENTIAL"): "private-model",
+                ("sensitivity", "REGULATED"): "private-model",
+                ("sensitivity", "NEVER_EGRESS"): "private-model",
             }
         )
 

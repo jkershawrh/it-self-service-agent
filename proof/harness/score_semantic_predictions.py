@@ -25,10 +25,23 @@ def main() -> int:
     )
     parser.add_argument("--minimum-precision", type=float, default=0.80)
     parser.add_argument("--minimum-recall", type=float, default=0.80)
+    parser.add_argument("--classifier")
     args = parser.parse_args()
 
-    corpus = {row["id"]: row for row in load_jsonl(args.corpus)}
+    all_corpus_rows = load_jsonl(args.corpus)
+    all_corpus_ids = {row["id"] for row in all_corpus_rows}
+    corpus_rows = all_corpus_rows
+    if args.classifier:
+        corpus_rows = [
+            row for row in corpus_rows if row["classifier_id"] == args.classifier
+        ]
+    corpus = {row["id"]: row for row in corpus_rows}
     predictions = load_jsonl(args.predictions)
+    truly_unknown = sorted({row["id"] for row in predictions} - all_corpus_ids)
+    if truly_unknown:
+        raise SystemExit(f"unknown prediction IDs: {truly_unknown}")
+    if args.classifier:
+        predictions = [row for row in predictions if row["id"] in corpus]
     seen = {row["id"] for row in predictions}
     missing = sorted(set(corpus) - seen)
     unknown = sorted(seen - set(corpus))

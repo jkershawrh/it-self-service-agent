@@ -8,10 +8,10 @@
 | CBT-001 | CBT/BDD | Shadow classification | No shadow-mode implementation | Evidence is recorded and the baseline route is unchanged | Green |
 | CBT-002 | CBT/BDD | Policy-owned semantic routing | No policy implementation | Complexity and sensitivity map to deterministic approved routes | Green |
 | CBT-003 | CBT/BDD | Explicit abstention fallback | No fallback implementation | ABSTAIN preserves baseline route and records its reason | Green |
-| EDD-001 | EDD | Classification quality corpus | No versioned prompts or measurable gate | Candidate IT corpus plus per-label precision/recall, abstention, and latency scorer | Green (harness); model run pending |
+| EDD-001 | EDD | Classification quality corpus | No versioned prompts or measurable gate | Candidate IT corpus plus per-label precision/recall, abstention, and latency scorer | Green harness; real model correctly remains Red |
 | CBT-004 | CBT | Transparent Praxis proxy | Direct-only baseline; no gateway path | Real Praxis proxy returns a behaviorally identical status and JSON response | Green |
 | CBT-005 | CBT | Live llm-d-sc gRPC adapter | Generated binding initially failed as a nested package; regenerated binding initially mismatched the protobuf runtime | Real loopback RPC validates revisions and ordering; unreachable service returns explicit `UNAVAILABLE` evidence | Green |
-| NFR-001 | CBT | Added latency | No repeatable classifier latency calculation | Scorer records p50/p95 classifier latency separately; real model values still pending | Green (harness); measurement pending |
+| NFR-001 | CBT | Added latency | No repeatable classifier latency calculation | Scorer records p50/p95 classifier latency separately | Green locally; cluster measurement pending |
 
 ## Red run
 
@@ -94,5 +94,25 @@ combined proof suite:             12 passed
 ```
 
 The evaluation tests verify per-label precision and recall, abstention rate,
-and interpolated p50/p95 latency. No live model quality result is claimed yet;
-the candidate corpus requires domain review and a real llm-d-sc shadow run.
+and interpolated p50/p95 latency. The candidate labels still require domain
+review, so the live result is an engineering baseline rather than final truth.
+
+## Real-model IT shadow run
+
+Date: 2026-09-14. The upstream release binaries and model artifacts were used
+at the revisions recorded above. Complexity and sensitivity were each served
+by a real `llm-d-sc-server`; the Python adapter made sequential gRPC calls over
+one persistent channel. Raw evidence is committed in
+`it-semantic-live-2026-09-14.jsonl`.
+
+| Classifier | Correct | p50 | p95 | Abstention | Gate |
+|---|---:|---:|---:|---:|---|
+| complexity | 3/8 (37.5%) | 12.12 ms | 14.17 ms | 0% | Red |
+| sensitivity | 6/10 (60%) | 10.03 ms | 11.44 ms | 0% | Red |
+
+Observed complexity predictions were `MEDIUM` for six of eight prompts,
+including both intended `SIMPLE` and both intended `REASONING` cases. The
+sensitivity run showed adjacent-tier confusion, including one credential prompt
+classified `REGULATED` instead of `NEVER_EGRESS`. Because the 0.80 per-label
+precision/recall gate failed, the evidence is suitable only for shadow-mode
+observation. Praxis enforcement is not approved by this proof.

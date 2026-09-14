@@ -16,6 +16,8 @@ llm-d-sc without changing the self-service agent's production deployment path.
 
 The policy implementation is a local executable specification. It is not yet
 wired into the quickstart's Agent Service, Llama Stack provider, or Helm chart.
+The first real-model shadow run failed the quality gate, so enforcement remains
+deliberately disabled.
 
 ## Contract and policy tests
 
@@ -86,12 +88,24 @@ The command exits nonzero unless every expected label reaches both the default
 0.80 precision and 0.80 recall threshold. It also reports abstention rate and
 p50/p95 classifier latency.
 
+The first real-model run is preserved in
+`proof/evidence/it-semantic-live-2026-09-14.jsonl`. Against the candidate corpus:
+
+- complexity: 3/8 correct (37.5%), p50 12.12 ms, p95 14.17 ms
+- sensitivity: 6/10 correct (60%), p50 10.03 ms, p95 11.44 ms
+- abstention: 0% for both classifiers
+
+Both classifiers correctly failed the 0.80 per-label precision/recall gate.
+These are local Apple ARM64 timings, not cluster capacity measurements. The run
+also exposed and corrected a proof-policy mismatch: upstream sensitivity uses
+`CONFIDENTIAL`, `REGULATED`, and `NEVER_EGRESS`, not `RESTRICTED`.
+
 ## Next red/green slices
 
 1. Obtain domain-owner review of the candidate IT corpus labels.
-2. Run a real llm-d-sc model against the corpus in shadow mode.
-3. Tune the taxonomy until the quality gate passes without hiding abstentions.
-4. Connect validated evidence to a Praxis routing policy.
+2. Tune IT-specific anchors or classifier artifacts in a separate experiment.
+3. Repeat the shadow run until the quality gate passes without hiding abstentions.
+4. Connect only validated evidence to a Praxis routing policy.
 5. Run existing quickstart evaluations through the transparent gateway.
 
 The upstream llm-d-sc schema and gRPC suites have also been run locally. On
