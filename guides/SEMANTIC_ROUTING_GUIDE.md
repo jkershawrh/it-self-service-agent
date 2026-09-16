@@ -12,6 +12,19 @@ It is an experimental learning path, not a production-readiness claim. The
 default quickstart remains unchanged and semantic routing is disabled unless an
 operator explicitly enables and completes the extension.
 
+## Interchangeable integration points
+
+The quickstart does not require a particular classifier or AI gateway. A
+`ClassifierAdapter` translates llm-d-sc, vLLM Semantic Router, rules, or a
+future classifier into versioned evidence. A separate `ModelGatewayAdapter`
+sends the selected logical model alias through LlamaStack, Praxis, RACMaaS, or
+another compatible gateway.
+
+Classify the original user turn once and carry its `RoutingContext` through the
+LangGraph state. Internal agent prompts should not be classified independently,
+because that could change models partway through one workflow. The contracts
+live in `proof_layer/adapters.py`; runtime wiring remains opt-in.
+
 ## Component responsibilities
 
 ```text
